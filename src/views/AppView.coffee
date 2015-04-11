@@ -3,6 +3,7 @@ class window.AppView extends Backbone.View
     <button class="hit-button">Hit</button> <button class="stand-button">Stand</button>
     <div class="player-hand-container"></div>
     <div class="dealer-hand-container"></div>
+    <div class="winner-announcement"></div>
   '
 
   events:
@@ -16,13 +17,13 @@ class window.AppView extends Backbone.View
       #TODO add play again functionality
 
     @model.get('game').on 'playerWon', ->
-      console.log 'Player wins!'
+      $('.winner-announcement').text 'Player wins!'
 
     @model.get('game').on 'dealerWon', ->
-      console.log 'Dealer wins!'
+      $('.winner-announcement').text 'Dealer wins!'
 
     @model.get('game').on 'push', ->
-      console.log 'Tie Game!'
+      $('.winner-announcement').text 'Tie game!'
 
     @render()
 
