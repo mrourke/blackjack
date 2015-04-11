@@ -21,6 +21,9 @@ class window.AppView extends Backbone.View
     @model.get('game').on 'dealerWon', ->
       console.log 'Dealer wins!'
 
+    @model.get('game').on 'push', ->
+      console.log 'Tie Game!'
+
     @render()
 
   render: ->
