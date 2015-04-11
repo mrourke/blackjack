@@ -11,9 +11,15 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @model.get('game').get('playerHand').on 'bust', =>
-      console.log 'appView knows its gameover'
+      console.log 'busted'
       $('.hit-button, .stand-button').toggle()
       #TODO add play again functionality
+
+    @model.get('game').on 'playerWon', ->
+      console.log 'Player wins!'
+
+    @model.get('game').on 'dealerWon', ->
+      console.log 'Dealer wins!'
 
     @render()
 
