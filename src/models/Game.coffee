@@ -1,8 +1,10 @@
 class window.Game extends Backbone.Model
   initialize: ->
-    @set 'deck', deck = new Deck()
-    @set 'playerHand', deck.dealPlayer()
-    @set 'dealerHand', deck.dealDealer()
+    if not @get('deck')? or @get('deck').length < 15
+      @set 'deck', new Deck()
+    console.log @get 'deck'
+    @set 'playerHand', @get('deck').dealPlayer()
+    @set 'dealerHand', @get('deck').dealDealer()
 
     #check for busts on hits
     @get('playerHand').on 'add', => 
@@ -33,7 +35,9 @@ class window.Game extends Backbone.Model
     while hand .scores() < 17   
       hand .hit()
     
-    hand .stand()
+    # don't call stand if the dealer already busted
+    if hand .scores() <= 21
+      hand .stand()
 
   gameOver: ->
     console.log 'checking who won'
@@ -53,3 +57,10 @@ class window.Game extends Backbone.Model
     console.log "checking bust #{hand} #{hand .scores()}"
     if hand .scores() > 21
       hand .trigger 'bust'
+
+  nextHand: ->
+    @set 'playerHand', @get('deck').dealPlayer()
+    console.log @get 'playerHand'
+    @set 'dealerHand', @get('deck').dealDealer()
+    console.log @get 'dealerHand'
+
