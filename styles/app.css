@@ -1,21 +1,57 @@
+body {
+  background-color: #076324
+}
+
+h2 {
+  background-color: white;
+  border: 5px solid black;
+  padding: 4px;
+}
+
+button {
+  width: 100px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin: 0 10px 0 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: #9eacb5;
+
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.play-again {
+  width: auto;
+}
+
 .card {
-  float: left;
-  border: solid 1px black;
+  display: inline-block;
+  float: center;
   width: 120px;
   border-radius: 5px;
   height: 167px;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .covered {
-  background-color: black;
-  content: url();
+  content: url('../img/card-back.png');
 }
 
 .hand {
+  text-align: center;
   overflow: auto;
 }
 
 .winner-announcement {
-  font-size: 24px;
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: center;
 }
