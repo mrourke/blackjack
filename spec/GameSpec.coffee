@@ -1,6 +1,6 @@
 assert = chai.assert
 
-describe 'deck', ->
+describe 'Game', ->
   game = null
   deck = null
   hand = null
@@ -18,10 +18,7 @@ describe 'deck', ->
     it 'should have a dealer hand', ->
       assert game.get 'dealerHand'
 
-    it 'should know when a player busts', ->
-      game.playerHand.hit()
-      game.playerHand.hit()
-      game.playerHand.hit()
-      game.playerHand.hit()
-      game.playerHand.hit()
-      assert 
+    it 'should call checkForBusts on card draw', ->
+      game.get('playerHand').hit()
+      expect('checkForBusts').to.be true; 
+      #expect($.ajax.calledOnce).to.be.true;
